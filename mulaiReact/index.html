@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Belajar React</title>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js"></script>
+</head>
+
+<body>
+  <div id="root"></div>
+
+
+  <script type="text/babel">
+    // const container = document.getElementById('root');
+    // const root = ReactDOM.createRoot(container);
+    // root.render( <h1> Belajar React Bareng WPU☄️ </h1>);
+
+
+    /// Gaya Komponen (Contoh Membuat komponen)
+    /* const container = document.getElementById('root');
+    const root = ReactDOM.createRoot(container);
+
+    function Header(){
+      return (<h1> Belajar React Bareng WPU☄️ </h1>);
+    }
+
+    root.render(<Header />); */
+
+    ///==== Komponen Bersarang ======
+    /* const container = document.getElementById('root');
+    const root = ReactDOM.createRoot(container);
+
+    function Header(){
+      return (<h1> Belajar React Bareng WPU☄️ </h1>);
+    }
+
+    function HomePage(){
+      return (
+        <div>
+          <Header />
+        </div>
+      );
+    } 
+
+    root.render(<HomePage />); */
+
+
+    ///====== Menampilkan beberapa komponen(Header) 
+    ///====== yg sama tetapi text/info/value yg berbeda ======
+    /* const container = document.getElementById('root');
+    const root = ReactDOM.createRoot(container);
+
+    function Header(props){
+      return (<h1> Belajar React Bareng {props.author} ☄️ </h1>);
+    }
+
+    function HomePage(){
+      return (
+        <div>
+          <Header author="sisi" />
+          <Header author="silvy" />
+        </div>
+      );
+    } 
+
+    root.render(<HomePage />); */
+
+     ///====== PROPS REFACTOR ======
+    /* const container = document.getElementById('root');
+    const root = ReactDOM.createRoot(container);
+
+    function Header({nama}){
+      return (<h1> Belajar React Bareng {nama ? nama : 'anonim'} ☄️ </h1>);
+    }
+
+    function HomePage(){
+      return (
+        <div>
+          <Header />
+          <Header nama="silvy" />
+        </div>
+      );
+    } 
+
+    root.render(<HomePage />); */
+
+
+
+
+     ///====== MENAMPILKAN ELEMEN MENGGUNAKAN LOOPING ======
+    /* const container = document.getElementById('root');
+    const root = ReactDOM.createRoot(container);
+
+    function Header({nama}){
+      return (<h1> Belajar React Bareng {nama ? nama : 'anonim'} ☄️ </h1>);
+    }
+
+
+    function HomePage(){
+      const murids = ['sisi', 'sela', 'susi']
+      return (
+        <div>
+          <Header />
+            <ul>
+              {
+                murids.map((murid) =>(
+                  <li key={murid} > {murid} </li>
+                ))
+              }
+            </ul>
+        </div>
+      );
+    } 
+
+    root.render(<HomePage />); */
+
+
+    ///====== MENGGUNAKAN STATE ======
+    // ~> State : sbg variable yg akan berubah 
+    // ~> StateUpdaterFunction : sbg function yg akan mengubah nilai dr statenya
+    // ~> props : yg jd attribut dari sebuah komponen
+    // ~> Event : yg menjadi trigger saat kita akan melakukan sesuatu
+    const container = document.getElementById('root');
+    const root = ReactDOM.createRoot(container);
+
+    function Header({nama}){
+      return (<h1> Belajar React Bareng {nama ? nama : 'anonim'} ☄️ </h1>);
+    }
+
+
+    function HomePage(){
+      const [subscribers, setSubscribers] = React.useState(1000);
+
+      function handleClick(){
+        setSubscribers(subscribers + 1);
+      }
+      return (
+        <div>
+          <Header />
+            <button onClick={handleClick}> Subscriber : {subscribers} </button>
+        </div>
+      );
+    } 
+
+    root.render(<HomePage />);
+
+
+
+
+
+
+  </script>
+</body>
+
+</html>

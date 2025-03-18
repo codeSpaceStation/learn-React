@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Belajar React</title>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js"></script>
+</head>
+
+<body>
+  <div id="root"></div>
+
+
+  <script type="text/babel">
+    const container = document.getElementById('root');
+    const root = ReactDOM.createRoot(container);
+
+    function Header(){
+      return (<h1> Counter </h1>);
+    }
+
+    function Button({handleClick, type, isDisabled}){
+      return (<button onClick = {handleClick} disabled = {isDisabled}> {type} </button>);
+    }
+
+
+
+    function HomePage(){
+
+      const [counts, setCounts] = React.useState(0);
+
+      function add(){
+        setCounts(counts + 1); 
+      }
+
+      function subs(){
+        setCounts(counts - 1); 
+      }
+
+      function reset(){
+        setCounts( 0);
+      }
+
+      
+      return (
+        <div>
+          <Header />
+          <div>
+          <Button handleClick= {subs} type = '-' isDisabled ={counts < 0 || counts > 10 ? true: false } />
+          {counts < 0 || counts > 10 ?  'done!' : counts }
+          <Button handleClick= {add} type = '+' isDisabled ={counts < 0 || counts > 10 ? true: false }  />
+          </div>
+          <Button handleClick= {reset} type = 'Reset' isDisabled ={counts < 0 || counts > 10 ? false: true } />
+        </div>
+      );
+    } 
+
+    root.render(<HomePage />);
+
+
+
+
+
+
+  </script>
+</body>
+
+</html>
